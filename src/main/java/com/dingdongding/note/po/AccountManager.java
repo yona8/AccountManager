@@ -44,6 +44,7 @@ public class AccountManager {
           detail.setQuantity(quantity);
           detail.setPrice(price);
           detail.setBalance(balance);
+          addDao addDao = new addDao();
           int result = addDao.add(detail);
           if (result == 1) {
             System.out.println("success");
@@ -54,27 +55,65 @@ public class AccountManager {
           break;
         case 2:
           System.out.println("2.search");
-          List li = searchDao.search();
-          System.out.println(li);
+          searchDao searchDao = new searchDao();
+          List<Detail> details = searchDao.search();
+          //          打印表格
+          System.out.println(
+              "-----------------------------------------------------------------------------------------");
+          System.out.printf(
+              "%2s %5s %5s %5s %5s %10s %5s %5s %5s %5s %5s %5s %5s",
+              "|",
+              "id",
+              "|",
+              "data",
+              "|",
+              "itemsName",
+              "|",
+              "quantity",
+              "|",
+              "price",
+              "|",
+              "balance",
+              "|");
+          System.out.println();
+          System.out.println(
+              "-----------------------------------------------------------------------------------------");
+          for (Detail detail1 : details) {
+            System.out.format(
+                "%2s %5s %5s %5s %5s %10s %5s %5s %5s %5s %5s %5s %5s ",
+                "|",
+                detail1.getId(),
+                "|",
+                detail1.getData(),
+                "|",
+                detail1.getItemsName(),
+                "|",
+                detail1.getQuantity(),
+                "|",
+                detail1.getPrice(),
+                "|",
+                detail1.getBalance(),
+                "|");
+            System.out.println();
+
+            System.out.println(
+                "---------------------------------------------------------------------------------------");
+          }
+
           break;
         case 3:
           System.out.println("3.Delete");
-          System.out.println("请输入您要删除的货品名称");
+          System.out.println("请输入您要删除的id");
           Scanner scanner = new Scanner(System.in);
-          String itemsName = scanner.nextLine();
-          detail.setItemsName(itemsName);
-          int rs = deleteDao.delete(itemsName);
-          Integer dPrice = detail.getPrice();
-          Integer dBalance = detail.getBalance();
-          detail.setBalance(dBalance + dPrice);
-
+          int id = scanner.nextInt();
+          deleteDao deleteDao = new deleteDao();
+          int rs = deleteDao.delete(id);
           if (rs == 1) {
             System.out.println("success");
 
           } else {
             System.out.println("fault");
           }
-
           break;
         case 4:
           System.out.println("4.Exchange");
@@ -87,16 +126,16 @@ public class AccountManager {
           System.out.println("请输入价格：");
           Integer newPrice = InputCheck.inputInt();
           System.out.println("请输入ID：");
-          Integer id = InputCheck.inputInt();
-          Integer newBalance = detail.getBalance() - newPrice;
-          ;
+          Integer newId = InputCheck.inputInt();
+          Integer newBalance = exBalanceCheck.ebc() - newPrice;
           // 把用户输入的数据封装到detail
           detail.setData(newData);
           detail.setItemsName(newItemName);
           detail.setQuantity(newQuantity);
           detail.setPrice(newPrice);
           detail.setBalance(newBalance);
-          detail.setId(id);
+          detail.setId(newId);
+          modifyDao modifyDao = new modifyDao();
           int rt = modifyDao.modify(detail);
           if (rt == 1) {
             System.out.println("success");

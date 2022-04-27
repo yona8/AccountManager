@@ -26,7 +26,7 @@ public class InputCheck {
         s = si.nextLine();
         break;
       } else {
-        System.out.println("input integer ONLY! Input again please");
+        System.out.println("input String ONLY! Input again please");
       }
     }
     return s;

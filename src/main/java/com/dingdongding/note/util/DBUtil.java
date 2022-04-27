@@ -13,7 +13,6 @@ public class DBUtil {
   String password = "";
   PreparedStatement ps = null;
   Connection connection = null;
-
   // 封装连接通道
   public Connection getCon() {
     try {

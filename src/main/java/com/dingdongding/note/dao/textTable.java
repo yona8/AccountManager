@@ -1,2 +1,3 @@
-package com.dingdongding.note.dao;public class textTable {
-}
+package com.dingdongding.note.dao;
+
+public class textTable {}

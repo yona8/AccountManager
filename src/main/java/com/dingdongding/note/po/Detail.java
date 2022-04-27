@@ -77,9 +77,8 @@ public class Detail {
   @Override
   public String toString() {
     return "Detail{"
-        + "data='"
+        + "data="
         + data
-        + '\''
         + ", itemsName='"
         + itemsName
         + '\''
@@ -91,6 +90,7 @@ public class Detail {
         + balance
         + ", id="
         + id
+        + '\''
         + '}';
   }
 }

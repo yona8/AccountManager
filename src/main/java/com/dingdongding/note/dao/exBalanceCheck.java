@@ -2,6 +2,7 @@ package com.dingdongding.note.dao;
 
 import com.dingdongding.note.util.DBUtil;
 
+import java.math.BigDecimal;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -9,8 +10,8 @@ import java.sql.SQLException;
 public class exBalanceCheck {
   private final DBUtil util = new DBUtil();
 
-  public int ebc() {
-    int balance = 0;
+  public BigDecimal ebc() {
+    BigDecimal balance = BigDecimal.valueOf(0);
     try {
       String sql = "select balance from Account.new_table order by id desc limit 1";
       // 创建statement 类对象，用来执行SQL语句
@@ -18,9 +19,9 @@ public class exBalanceCheck {
       // 执行SQL语句，返回结果集
       ResultSet resultSet = ps.executeQuery();
       if (!resultSet.next()) {
-        balance = 1000;
+        balance = BigDecimal.valueOf(1000);
       } else {
-        balance = resultSet.getInt("balance");
+        balance = resultSet.getBigDecimal("balance");
       }
       resultSet.close();
       util.close();

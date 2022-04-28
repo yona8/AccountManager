@@ -19,11 +19,11 @@ public class modifyDao {
       // 创建statement 类对象，用来执行SQL语句
       PreparedStatement ps = util.createStatement(sql);
       //                    将数据添加到对应数据库位置
-      ps.setInt(1, detail.getData());
+      ps.setDate(1, detail.getData());
       ps.setString(2, detail.getItemsName());
       ps.setInt(3, detail.getQuantity());
-      ps.setInt(4, detail.getPrice());
-      ps.setInt(5, detail.getBalance());
+      ps.setBigDecimal(4, detail.getPrice());
+      ps.setBigDecimal(5, detail.getBalance());
       ps.setInt(6, detail.getId());
       //                    执行SQL语句，返回结果，执行结果为数据库受影响的行数，如果为0则执行失败
       result = ps.executeUpdate();

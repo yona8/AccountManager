@@ -2,6 +2,7 @@ package com.dingdongding.note.dao;
 
 import com.dingdongding.note.util.DBUtil;
 
+import java.math.BigDecimal;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -20,16 +21,16 @@ public class deleteDao {
       ps.setInt(1, id);
       // 执行SQL语句，返回结果，执行结果为数据库受影响的行数，如果为0则执行失败
       ResultSet DeletePrice = ps.executeQuery();
-      int dp = 0;
+      BigDecimal dp = BigDecimal.valueOf(0);
       if (DeletePrice.next()) {
-        dp = DeletePrice.getInt("price");
+        dp = DeletePrice.getBigDecimal("price");
       }
       PreparedStatement prs = util.createStatement(sql2);
       prs.setInt(1, id);
       result = prs.executeUpdate();
       exBalanceCheck exBalanceCheck = new exBalanceCheck();
-      int ebc = exBalanceCheck.ebc();
-      ebc = ebc + dp;
+      BigDecimal ebc = exBalanceCheck.ebc();
+      ebc = ebc.add(dp);
       util.close();
     } catch (SQLException e) {
       e.printStackTrace();

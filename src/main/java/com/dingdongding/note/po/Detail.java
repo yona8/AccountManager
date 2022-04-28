@@ -1,22 +1,25 @@
 package com.dingdongding.note.po;
 
+import java.math.BigDecimal;
+import java.sql.Date;
+
 public class Detail {
 
-  private Integer data;
+  private Date data;
   private String itemsName;
   private Integer quantity;
-  private Integer price;
-  private Integer balance;
+  private BigDecimal price;
+  private BigDecimal balance;
   private Integer id;
 
   public Detail() {}
 
   public Detail(
-      Integer data,
+      Date data,
       String itemsName,
       Integer quantity,
-      Integer price,
-      Integer balance,
+      BigDecimal price,
+      BigDecimal balance,
       Integer id) {
     this.data = data;
     this.itemsName = itemsName;
@@ -26,11 +29,11 @@ public class Detail {
     this.id = id;
   }
 
-  public Integer getData() {
+  public Date getData() {
     return data;
   }
 
-  public void setData(Integer data) {
+  public void setData(Date data) {
     this.data = data;
   }
 
@@ -50,19 +53,19 @@ public class Detail {
     this.quantity = quantity;
   }
 
-  public Integer getPrice() {
+  public BigDecimal getPrice() {
     return price;
   }
 
-  public void setPrice(Integer price) {
+  public void setPrice(BigDecimal price) {
     this.price = price;
   }
 
-  public Integer getBalance() {
+  public BigDecimal getBalance() {
     return balance;
   }
 
-  public void setBalance(Integer balance) {
+  public void setBalance(BigDecimal balance) {
     this.balance = balance;
   }
 

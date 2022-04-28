@@ -3,10 +3,8 @@ package com.dingdongding.note.dao;
 import com.dingdongding.note.po.Detail;
 import com.dingdongding.note.util.DBUtil;
 
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
+import java.math.BigDecimal;
+import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -28,11 +26,11 @@ public class searchDao {
       while (resultSet.next()) {
         //  获取数据
         int id = resultSet.getInt("id");
-        int data = resultSet.getInt("data");
+        Date data = resultSet.getDate("data");
         String itemsName = resultSet.getString("itemsName");
         int quantity = resultSet.getInt("quantity");
-        int price = resultSet.getInt("price");
-        int balance = resultSet.getInt("balance");
+        BigDecimal price = BigDecimal.valueOf(resultSet.getInt("price"));
+        BigDecimal balance = BigDecimal.valueOf(resultSet.getInt("balance"));
         // 封装对象
         detail = new Detail();
         detail.setId(id);

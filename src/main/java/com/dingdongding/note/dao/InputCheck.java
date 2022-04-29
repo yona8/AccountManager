@@ -7,6 +7,7 @@ import java.util.Date;
 import java.util.Scanner;
 
 public class InputCheck {
+
   // 验证用户是否输入的日期格式正确
   public static java.sql.Date inputData() {
     Date data = null;
@@ -19,6 +20,8 @@ public class InputCheck {
       SimpleDateFormat format = new SimpleDateFormat("dd/MM/yyyy");
       try {
         // 用format.parse转化用户输入的日期
+        // 设置lenient为false. 否则SimpleDateFormat会比较宽松地验证日期，例如38/23/24528 会被接受
+        format.setLenient(false);
         data = format.parse(ss);
         // 转化成功，返回 date
         date = new java.sql.Date(data.getTime());
@@ -31,7 +34,7 @@ public class InputCheck {
     }
     return date;
   }
-
+  // 校验用户输入是否为金额
   public static BigDecimal inputBigDecimal() {
 
     BigDecimal i = BigDecimal.valueOf(0);
@@ -46,7 +49,7 @@ public class InputCheck {
     }
     return i;
   }
-  // 校验用户输入的数字是否为空
+  // 校验用户输入的数字是否为int
   public static int inputInt() {
 
     int i = 0;
@@ -69,7 +72,7 @@ public class InputCheck {
       if (ss.trim().isEmpty()) { // 需注意这里ss 不能替换成si.nextLine.trim().isEmpty
         System.out.println("The input is empty");
       } else if (isNumeric(ss)) {
-        System.out.println("cannot just number");
+        System.out.println("Cannot be just number");
       } else {
         return ss;
       }

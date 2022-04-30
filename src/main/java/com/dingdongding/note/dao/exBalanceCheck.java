@@ -18,6 +18,7 @@ public class exBalanceCheck {
       PreparedStatement ps = util.createStatement(sql);
       // 执行SQL语句，返回结果集
       ResultSet resultSet = ps.executeQuery();
+      // 如果结果集里由余额，获取余额，如果没有赋值余额为1000
       if (!resultSet.next()) {
         balance = BigDecimal.valueOf(1000);
       } else {

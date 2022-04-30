@@ -1,4 +1,4 @@
-package com.dingdongding.note.po;
+package com.dingdongding.note.dao;
 
 import java.math.BigDecimal;
 import java.text.ParseException;
@@ -12,6 +12,7 @@ public class InputCheck {
   public static java.sql.Date inputData() {
     Date data = null;
     java.sql.Date date = null;
+
     while (true) {
       // 获取用户输入的日期
       Scanner si = new Scanner(System.in);
@@ -29,7 +30,7 @@ public class InputCheck {
 
       } catch (ParseException e) {
         // 转换失败，输出下面语句
-        System.out.println("input data ONLY! Input again please");
+        System.out.println("Wrong data format, Input again please");
       }
     }
     return date;
@@ -42,27 +43,32 @@ public class InputCheck {
       Scanner si = new Scanner(System.in);
       if (si.hasNextBigDecimal()) {
         i = si.nextBigDecimal();
-        break;
+        if (i.intValue() > 0) {
+          return i;
+        } else {
+          System.out.println("Input must be above 0!! Input again please");
+        }
       } else {
-        System.out.println("input integer ONLY! Input again please");
+        System.out.println("input price format ONLY! Input again please");
       }
     }
-    return i;
+    //    return i;
   }
   // 校验用户输入的数字是否为int
   public static int inputInt() {
-
-    int i = 0;
     while (true) {
       Scanner si = new Scanner(System.in);
       if (si.hasNextInt()) {
-        i = si.nextInt();
-        break;
+        int result = si.nextInt();
+        if (result > 0) {
+          return result;
+        } else {
+          System.out.println("Input must be above 0!! Input again please");
+        }
       } else {
         System.out.println("input integer ONLY! Input again please");
       }
     }
-    return i;
   }
   // 校验用户输入的字符串是否为空
   public static String inputString() {
@@ -72,7 +78,7 @@ public class InputCheck {
       if (ss.trim().isEmpty()) { // 需注意这里ss 不能替换成si.nextLine.trim().isEmpty
         System.out.println("The input is empty");
       } else if (isNumeric(ss)) {
-        System.out.println("Cannot be just number");
+        System.out.println("Cannot just be a number");
       } else {
         return ss;
       }

@@ -11,7 +11,7 @@ import java.util.List;
 public class searchDao {
   private DBUtil util = new DBUtil();
 
-  public List search() {
+  public List<Detail> search() {
     int result = 0;
     List<Detail> details = new ArrayList<>();
     try {
@@ -31,6 +31,7 @@ public class searchDao {
         int quantity = resultSet.getInt("quantity");
         BigDecimal price = BigDecimal.valueOf(resultSet.getInt("price"));
         BigDecimal balance = BigDecimal.valueOf(resultSet.getInt("balance"));
+        String remarks = resultSet.getString("remarks");
         // 封装对象
         detail = new Detail();
         detail.setId(id);
@@ -39,6 +40,7 @@ public class searchDao {
         detail.setQuantity(quantity);
         detail.setPrice(price);
         detail.setBalance(balance);
+        detail.setRemarks(remarks);
         // 装载入集合
         details.add(detail);
       }

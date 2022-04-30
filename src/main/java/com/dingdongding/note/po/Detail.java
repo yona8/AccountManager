@@ -11,6 +11,7 @@ public class Detail {
   private BigDecimal price;
   private BigDecimal balance;
   private Integer id;
+  private String remarks;
 
   public Detail() {}
 
@@ -20,7 +21,8 @@ public class Detail {
       Integer quantity,
       BigDecimal price,
       BigDecimal balance,
-      Integer id) {
+      Integer id,
+      String remarks) {
     this.data = data;
     this.itemsName = itemsName;
     this.quantity = quantity;
@@ -77,6 +79,14 @@ public class Detail {
     this.id = id;
   }
 
+  public String getRemarks() {
+    return remarks;
+  }
+
+  public void setRemarks(String remarks) {
+    this.remarks = remarks;
+  }
+
   @Override
   public String toString() {
     return "Detail{"
@@ -93,6 +103,8 @@ public class Detail {
         + balance
         + ", id="
         + id
+        + ", remarks='"
+        + remarks
         + '\''
         + '}';
   }

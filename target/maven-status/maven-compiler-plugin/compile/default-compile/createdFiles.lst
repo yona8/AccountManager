@@ -3,14 +3,12 @@ com/dingdongding/note/util/DBUtil.class
 com/dingdongding/note/dao/deleteOneDao.class
 com/dingdongding/note/dao/InputCheck.class
 com/dingdongding/note/po/User.class
-com/dingdongding/note/web/loginServlet.class
+com/dingdongding/note/web/addServlet.class
 com/dingdongding/note/web/registerServlet.class
 com/dingdongding/note/dao/UpdateDao.class
 com/dingdongding/note/dao/addDao.class
 com/dingdongding/note/dao/searchDao.class
 com/dingdongding/note/web/SelectAllServlet.class
-com/dingdongding/note/dao/exBalanceCheck.class
 com/dingdongding/note/dao/deleteDao.class
 com/dingdongding/note/po/Detail.class
 com/dingdongding/note/dao/userDao.class
-com/dingdongding/note/po/AccountManager.class

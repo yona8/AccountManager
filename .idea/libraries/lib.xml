@@ -1,0 +1,15 @@
+<component name="libraryTable">
+  <library name="lib">
+    <CLASSES>
+      <root url="file://$PROJECT_DIR$/src/lib" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES>
+      <root url="file://$PROJECT_DIR$/src/lib" />
+      <root url="jar://$PROJECT_DIR$/src/lib/commons-dbutils-1.7-src.zip!/commons-dbutils-1.7-src/src/main/java" />
+      <root url="jar://$PROJECT_DIR$/src/lib/commons-dbutils-1.7-src.zip!/commons-dbutils-1.7-src/src/test/java" />
+    </SOURCES>
+    <jarDirectory url="file://$PROJECT_DIR$/src/lib" recursive="false" />
+    <jarDirectory url="file://$PROJECT_DIR$/src/lib" recursive="false" type="SOURCES" />
+  </library>
+</component>

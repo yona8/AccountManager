@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+// Node.js program to demonstrate the
+// Node.js filehandle.read() Method
+
+// Denotes total number of rows.
+var rowIdx = 0;
+
+// jQuery button click event to add a row.
+$('#addBtn').on('click', function () {
+
+// Adding a row inside the tbody.
+$('#tbody').append(`<tr id="R${++rowIdx}">
+    <td class="row-index text-center">
+        <p>Row ${rowIdx}</p>
+    </td>
+    <td class="text-center">
+        <button class="btn btn-danger remove" type="button">Remove</button>
+    </td>
+</tr>`);
+});
+<body>
+
+    <div class="container pt-4">
+        <div class="table-responsive">
+            <table class="table table-bordered">
+                <thead>
+                    <tr>
+                        <th class="text-center">Row Number</th>
+                        <th class="text-center">Remove Row</th>
+                    </tr>
+                </thead>
+                <tbody id="tbody">
+
+                </tbody>
+            </table>
+        </div>
+        <button class="btn btn-md btn-primary" id="addBtn" type="button">
+            Add new Row
+        </button>
+    </div>
+</body>
+</html>

@@ -7,17 +7,17 @@
     <title>Document</title>
 </head>
 <body>
-    <form action="/Flower/addServlet" method="post">
-        添加数据 <br>
-        账单类型:consume<input type="radio" name="type"> income<input type="radio" name="type"><br>
+<form action="/Flower/addServlet" method="get">
+    <input type="hidden" name="actionName" value="add">
+    添加数据 <br>
+    账单类型:consume<input type="radio" name="type"> income<input type="radio" name="type"><br>
+    请输入日期:<input type="date" name="data"><br>
+    请输入商品名称:<input type="text" name="itemsName"><br>
+    请输入数量:<input type="text" name="quantity"><br>
+    请输入金额:<input type="text" name="price"><br>
+    <input type="submit" value="Submit">
 
-        账单时间:<input name="data"> 账单标题:<input  name="itemsName"> 
-        数量:<input  name="quantity">账单金额:<input  name="price"><br>
 
-        <input type="submit">
-        
-        
-
-    </form >
+</form>
 </body>
 </html>

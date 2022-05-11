@@ -31,7 +31,7 @@ public class registerServlet extends HttpServlet {
     resp.setContentType("text/html;charset=utf-8");
     out = resp.getWriter();
     if (result == 1) {
-      out.print("<font style='color:red;font-size:40'>注册成功</font>");
+      resp.sendRedirect(req.getContextPath() + "/index.html");
     } else {
       out.print("<font style='color:red;font-size:40'>注册失败</font>");
     }

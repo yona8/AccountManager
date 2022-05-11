@@ -4,30 +4,38 @@ import java.math.BigDecimal;
 import java.sql.Date;
 
 public class Detail {
-
+  private Integer id;
   private Date data;
   private String itemsName;
   private Integer quantity;
   private BigDecimal price;
   private BigDecimal balance;
-  private Integer id;
   private String remarks;
 
   public Detail() {}
 
   public Detail(
+      Integer id,
       Date data,
       String itemsName,
       Integer quantity,
       BigDecimal price,
       BigDecimal balance,
-      Integer id,
       String remarks) {
+    this.id = id;
     this.data = data;
     this.itemsName = itemsName;
     this.quantity = quantity;
     this.price = price;
     this.balance = balance;
+    this.remarks = remarks;
+  }
+
+  public Integer getId() {
+    return id;
+  }
+
+  public void setId(Integer id) {
     this.id = id;
   }
 
@@ -71,14 +79,6 @@ public class Detail {
     this.balance = balance;
   }
 
-  public Integer getId() {
-    return id;
-  }
-
-  public void setId(Integer id) {
-    this.id = id;
-  }
-
   public String getRemarks() {
     return remarks;
   }
@@ -90,7 +90,9 @@ public class Detail {
   @Override
   public String toString() {
     return "Detail{"
-        + "data="
+        + "id="
+        + id
+        + ", data="
         + data
         + ", itemsName='"
         + itemsName
@@ -101,8 +103,6 @@ public class Detail {
         + price
         + ", balance="
         + balance
-        + ", id="
-        + id
         + ", remarks='"
         + remarks
         + '\''

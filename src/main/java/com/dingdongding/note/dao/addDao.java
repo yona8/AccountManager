@@ -26,6 +26,7 @@ public class addDao {
       ps.setBigDecimal(5, detail.getBalance());
       // 执行SQL语句，返回结果，执行结果为数据库受影响的行数，如果为0则执行失败
       result = ps.executeUpdate();
+      System.out.println(result);
       util.close();
     } catch (SQLException e) {
       e.printStackTrace();

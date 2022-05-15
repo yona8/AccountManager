@@ -69,6 +69,7 @@ public class addServlet extends HttpServlet {
       //       4.调用响应对象，根据验证结果将不同资源文件地址写入到响应头，交给浏览器
       if (result == 1 && balance1 == 1) { // 添加成功
         resp.sendRedirect(req.getContextPath() + "/bill.html");
+        //        resp.getWriter().write("success");
       } else {
         resp.sendRedirect(req.getContextPath() + "/login-error.html");
       }

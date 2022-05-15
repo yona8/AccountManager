@@ -1,11 +1,16 @@
 package com.dingdongding.note.po;
 
+import com.alibaba.fastjson.annotation.JSONField;
+
 import java.math.BigDecimal;
 import java.sql.Date;
 
 public class Bill {
   private Integer id;
+
+  @JSONField(format = "yyyy-MM-dd")
   private Date data;
+
   private String itemsName;
   private Integer quantity;
   private BigDecimal price;

@@ -7,6 +7,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import java.io.IOException;
 
 @WebServlet("/loginServlet")
@@ -24,7 +25,11 @@ public class loginServlet extends HttpServlet {
     // 2.调取请求对象，读取请求头参数信息，得到用户的信息
     String username = req.getParameter("userName");
     String password = req.getParameter("userPwd");
-    System.out.println(username);
+    // 将用户名存储到session
+    //    1.获取Session对象
+    HttpSession session = req.getSession();
+    //    2.存储数据
+    session.setAttribute("username", username);
     // 3.调用Dao将查询验证信息推送到数据库服务器上
     result = dao.login(username, password);
     // 4.调用响应对象，根据验证结果将不同资源文件地址写入到响应头，交给浏览器

@@ -23,7 +23,6 @@ public class UpdateDao {
       ps.setString(2, detail.getItemsName());
       ps.setInt(3, detail.getQuantity());
       ps.setBigDecimal(4, detail.getPrice());
-      ps.setBigDecimal(5, detail.getBalance());
       ps.setInt(6, detail.getId());
       // 执行SQL语句，返回结果，执行结果为数据库受影响的行数，如果为0则执行失败
       result = ps.executeUpdate();

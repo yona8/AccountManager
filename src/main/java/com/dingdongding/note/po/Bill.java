@@ -3,32 +3,22 @@ package com.dingdongding.note.po;
 import java.math.BigDecimal;
 import java.sql.Date;
 
-public class Detail {
+public class Bill {
   private Integer id;
   private Date data;
   private String itemsName;
   private Integer quantity;
   private BigDecimal price;
-  private String remarks;
-  private Integer userid;
+  private BigDecimal balance;
 
-  public Detail() {}
+  public Bill() {}
 
-  public Detail(
-      Integer id,
-      Date data,
-      String itemsName,
-      Integer quantity,
-      BigDecimal price,
-      String remarks,
-      Integer userid) {
+  public Bill(Integer id, Date data, String itemsName, Integer quantity, BigDecimal price) {
     this.id = id;
     this.data = data;
     this.itemsName = itemsName;
     this.quantity = quantity;
     this.price = price;
-    this.remarks = remarks;
-    this.userid = userid;
   }
 
   public Integer getId() {
@@ -71,25 +61,9 @@ public class Detail {
     this.price = price;
   }
 
-  public String getRemarks() {
-    return remarks;
-  }
-
-  public void setRemarks(String remarks) {
-    this.remarks = remarks;
-  }
-
-  public Integer getUserid() {
-    return userid;
-  }
-
-  public void setUserid(Integer userid) {
-    this.userid = userid;
-  }
-
   @Override
   public String toString() {
-    return "Detail{"
+    return "Bill{"
         + "id="
         + id
         + ", data="
@@ -101,11 +75,6 @@ public class Detail {
         + quantity
         + ", price="
         + price
-        + ", remarks='"
-        + remarks
-        + '\''
-        + ", userid="
-        + userid
         + '}';
   }
 }

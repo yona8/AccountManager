@@ -6,12 +6,13 @@ li {
     list-style: none;
 }
 
-
-
-
 h1 ,.button,.search{
     text-align: center;
     margin: 10px;
+}
+h3{
+margin-left:150px;
+
 }
 table{
     width: 1000px;

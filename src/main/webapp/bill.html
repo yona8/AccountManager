@@ -9,6 +9,7 @@
     <link rel="stylesheet" href="CSS/bill.css">
     <script src="jquery.min.js"></script>
     <script src="JS/bill.js"></script>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
 </head>
 <script>
 
@@ -16,7 +17,8 @@
 
 <body>
 <h1>Accountant List</h1>
-
+<h3>余额：<input id="balance">
+</h3>
 <table id="table">
     <thead>
     <tr>
@@ -26,30 +28,31 @@
         <th>itemsName</th>
         <th>quantity</th>
         <th>price</th>
-        <th>balance</th>
         <th>remarks</th>
 
     </tr>
     </thead>
 
     <tbody>
-    <!--            <tr class="addtr">-->
-    <!--                <td > <input id="allCkb" type="checkbox"></td>-->
-    <!--                <td contenteditable="true"></td>-->
-    <!--                <td contenteditable="true"></td>-->
-    <!--                <td contenteditable="true"></td>-->
-    <!--                <td contenteditable="true"></td>-->
-    <!--                <td contenteditable="true"></td>-->
-    <!--                <td contenteditable="true"></td>-->
-    <!--                <td ><button class="remove">删除</button><button>修改</button></td>-->
-    <!--            </tr>-->
+    <tr class="addtr">
+        <td><input id="allCkb" type="checkbox"></td>
+        <td contenteditable="true"></td>
+        <td contenteditable="true"></td>
+        <td contenteditable="true"></td>
+        <td contenteditable="true"></td>
+        <td contenteditable="true"></td>
+        <td>
+            <button class="remove">删除</button>
+            <button>修改</button>
+        </td>
+    </tr>
     </tbody>
 
 
 </table>
 <div class="button">
     <button>查询</button>
-    <button type="submit" class="add">添加</button>
+    <button type="submit" class="add" id="add">添加</button>
 </div>
 
 </body>

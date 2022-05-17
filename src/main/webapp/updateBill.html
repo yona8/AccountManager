@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="jquery.min.js"></script>
+    <script src="JS/update.js"></script>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+</head>
+<style>
+    * {
+        margin: 0;
+        padding: 0;
+    }
+
+    .box {
+        text-align: center;
+        /*让div内部文字居中*/
+        border: 1px solid black;
+        border-radius: 20px;
+        width: 300px;
+        height: 350px;
+        margin: auto;
+        position: absolute;
+        top: 200px;
+        left: 0;
+        right: 0;
+    }
+
+    input {
+        padding: 5px;
+        margin: 10px
+    }
+
+    .title {
+        margin: 10px
+    }
+</style>
+<body>
+    <div class="box">
+        <form action="/Flower/updateBillServlet" method="get">
+            <input type="hidden" name="actionName" value="add">
+            <br>
+            <div class="title">
+                修改数据
+            </div>
+            账单类型: consume<input type="radio" name="type" value="consume" checked="checked">
+            income<input type="radio" name="type" value="income"><br>
+            请输入日期:<input type="date" name="data" value="" id="data"><br>
+            请输入商品名称:<input type="text" name="itemsName" value="" id="itemsName"><br>
+            请输入数量:<input type="text" name="quantity" value="" id="quantity"><br>
+            请输入金额:<input type="text" name="price" value=""id="price"><br>
+            <input type="submit" value="Submit">
+    
+    
+        </form>
+    </div>
+</body>
+</html>

@@ -40,7 +40,7 @@ $(function () {
                     //从后台获取数据
                     let bills = resp.data;
                     console.log(bills);
-                    let tableDate = "<tr><th>select</th><th>id</th><th>data</th><th>itemsName</th><th>quantity</th><th>price</th><th>remarks</th></tr>";
+                    let tableDate = "<tr><th>select</th><th>id</th><th>type</th><th>data</th><th>itemsName</th><th>quantity</th><th>price</th><th>remarks</th></tr>";
                     // 遍历数据
                     for (let i = 0; i < bills.length; i++) {
                         let bill = bills[i];
@@ -48,10 +48,11 @@ $(function () {
                             " <tr class='addtr'>\n" +
                             " <td><input id='allCkb' type='checkbox'></td>\n" +
                             " <td>" + bill.id + "</td>\n" +
+                            " <td>" + bill.type + "</td>\n" +
                             " <td>" + bill.data + "</td>\n" +
                             " <td>" + bill.itemsName + "</td>\n" +
                             " <td>" + bill.quantity + "</td>\n" +
-                            " <td>" + bill.price + "</td>\n" +
+                            " <td>" + bill.price.toFixed(2) + "</td>\n" +
                             "<td><button id='update'>修改</button></td>\n" +
                             "</tr >"
                     }
@@ -77,6 +78,7 @@ $(function () {
 
 
 })
+//添加数据
 //当页面加载完成后，发送ajax请求
 window.onload = function () {
 
@@ -86,19 +88,20 @@ window.onload = function () {
     }).then(function (resp) {
         //从后台获取数据
         let bills = resp.data;
-
-        let tableDate = "<tr><th>select</th><th>id</th><th>data</th><th>itemsName</th><th>quantity</th><th>price</th><th>remarks</th></tr>";
+console.log(bills);
+        let tableDate = "<tr><th>select</th><th>id</th><th>type</th><th>data</th><th>itemsName</th><th>quantity</th><th>price</th><th>remarks</th></tr>";
         // 遍历数据
         for (let i = 0; i < bills.length; i++) {
             let bill = bills[i];
             tableDate += "\n" +
                 " <tr class='addtr'>\n" +
                 " <td><input id='allCkb' type='checkbox'></td>\n" +
-                " <td contenteditable='true'>" + bill.id + "</td>\n" +
-                "<td contenteditable='true'>" + bill.data + "</td>\n" +
-                " <td contenteditable='true'>" + bill.itemsName + "</td>\n" +
-                "<td contenteditable='true'>" + bill.quantity + "</td>\n" +
-                " <td contenteditable='true'>" + bill.price + "</td>\n" +
+                " <td>" + bill.id + "</td>\n" +
+                " <td>" + bill.type + "</td>\n" +
+                " <td>" + bill.data + "</td>\n" +
+                " <td>" + bill.itemsName + "</td>\n" +
+                " <td>" + bill.quantity + "</td>\n" +
+                " <td>" + bill.price.toFixed(2) + "</td>\n" +
                 "<td><button id='update'>修改</button></td>\n" +
                 "</tr >"
         }
@@ -121,7 +124,6 @@ window.onload = function () {
     $("#table").on("click", "#update", function () {
 
         var id = $(this).closest('tr').find('td').eq(1).text();
-        
         axios({
             method: "post",
             url: "http://localhost:8080/Flower/selectByIdServlet",
@@ -134,12 +136,7 @@ window.onload = function () {
 
             location.href = "updateBill.html"
 
-        })
-        axios({
-            method: "post",
-            url: "http://localhost:8080/Flower/updateBillServlet",
-            data: id
-        })
+        });
 
     })
 

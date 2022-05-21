@@ -5,6 +5,7 @@ import java.sql.Date;
 
 public class Detail {
   private Integer id;
+  private String type;
   private Date data;
   private String itemsName;
   private Integer quantity;
@@ -16,6 +17,7 @@ public class Detail {
 
   public Detail(
       Integer id,
+      String type,
       Date data,
       String itemsName,
       Integer quantity,
@@ -23,6 +25,7 @@ public class Detail {
       String remarks,
       Integer userid) {
     this.id = id;
+    this.type = type;
     this.data = data;
     this.itemsName = itemsName;
     this.quantity = quantity;
@@ -37,6 +40,14 @@ public class Detail {
 
   public void setId(Integer id) {
     this.id = id;
+  }
+
+  public String getType() {
+    return type;
+  }
+
+  public void setType(String type) {
+    this.type = type;
   }
 
   public Date getData() {
@@ -92,6 +103,9 @@ public class Detail {
     return "Detail{"
         + "id="
         + id
+        + ", type='"
+        + type
+        + '\''
         + ", data="
         + data
         + ", itemsName='"

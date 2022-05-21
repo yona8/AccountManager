@@ -3,7 +3,7 @@ package com.dingdongding.note.web;
 import com.dingdongding.note.dao.UpdateBalanceDao;
 import com.dingdongding.note.dao.addDao;
 import com.dingdongding.note.dao.exBalanceCheck;
-import com.dingdongding.note.dao.searchIdDao;
+import com.dingdongding.note.dao.searchUseridDao;
 import com.dingdongding.note.po.BalanceDetail;
 import com.dingdongding.note.po.Detail;
 
@@ -43,7 +43,7 @@ public class addServlet extends HttpServlet {
       HttpSession session = req.getSession();
       String username = (String) session.getAttribute("username");
       //      通过session里面的username 调用searchIdDao
-      searchIdDao searchIdDao = new searchIdDao();
+      searchUseridDao searchIdDao = new searchUseridDao();
       Integer userid = searchIdDao.searchID(username);
       // 2.调取请求对象，获取数据合集
       SimpleDateFormat sf = new SimpleDateFormat("yyyy-MM-dd");
@@ -53,7 +53,6 @@ public class addServlet extends HttpServlet {
       int quantity = Integer.parseInt(req.getParameter("quantity"));
       BigDecimal price = new BigDecimal(req.getParameter("price"));
       String type = req.getParameter("type");
-      System.out.println(type);
 
       if (type.equals("consume")) {
         balance = exBalanceCheck.ebc(userid).subtract(price);
@@ -61,7 +60,7 @@ public class addServlet extends HttpServlet {
         balance = exBalanceCheck.ebc(userid).add(price);
       }
 
-      detail = new Detail(null, data, itemsName, quantity, price, null, userid);
+      detail = new Detail(null, type, data, itemsName, quantity, price, null, userid);
       balanceDetail = new BalanceDetail(balance, userid);
       //   3.调用Dao将查询验证信息推送到数据库服务器上
       result = adddao.add(detail);

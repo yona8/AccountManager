@@ -7,23 +7,36 @@ import java.sql.Date;
 
 public class Bill {
   private Integer id;
+  private String type;
 
   @JSONField(format = "yyyy-MM-dd")
   private Date data;
 
   private String itemsName;
   private Integer quantity;
+
+  //  @JSONField(serializeUsing = ToStringSerializer.class)
   private BigDecimal price;
+
   private BigDecimal balance;
 
   public Bill() {}
 
-  public Bill(Integer id, Date data, String itemsName, Integer quantity, BigDecimal price) {
+  public Bill(
+      Integer id,
+      String type,
+      Date data,
+      String itemsName,
+      Integer quantity,
+      BigDecimal price,
+      BigDecimal balance) {
     this.id = id;
+    this.type = type;
     this.data = data;
     this.itemsName = itemsName;
     this.quantity = quantity;
     this.price = price;
+    this.balance = balance;
   }
 
   public Integer getId() {
@@ -32,6 +45,14 @@ public class Bill {
 
   public void setId(Integer id) {
     this.id = id;
+  }
+
+  public String getType() {
+    return type;
+  }
+
+  public void setType(String type) {
+    this.type = type;
   }
 
   public Date getData() {
@@ -66,11 +87,22 @@ public class Bill {
     this.price = price;
   }
 
+  public BigDecimal getBalance() {
+    return balance;
+  }
+
+  public void setBalance(BigDecimal balance) {
+    this.balance = balance;
+  }
+
   @Override
   public String toString() {
     return "Bill{"
         + "id="
         + id
+        + ", type='"
+        + type
+        + '\''
         + ", data="
         + data
         + ", itemsName='"
@@ -80,6 +112,8 @@ public class Bill {
         + quantity
         + ", price="
         + price
+        + ", balance="
+        + balance
         + '}';
   }
 }

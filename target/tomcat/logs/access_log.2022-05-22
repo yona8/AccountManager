@@ -1,0 +1,9 @@
+0:0:0:0:0:0:0:1 - - [22/May/2022:00:00:10 +1200] "GET /Flower HTTP/1.1" 302 - http-bio-8080-exec-1 0
+0:0:0:0:0:0:0:1 - - [22/May/2022:00:00:10 +1200] "GET /Flower/JS/index.js HTTP/1.1" 304 - http-bio-8080-exec-3 23
+0:0:0:0:0:0:0:1 - - [22/May/2022:00:00:12 +1200] "GET /Flower/loginServlet?actionName=login&userName=momo&userPwd=123456 HTTP/1.1" 302 - http-bio-8080-exec-4 182
+0:0:0:0:0:0:0:1 - - [22/May/2022:00:00:12 +1200] "GET /Flower/JS/bill.js HTTP/1.1" 304 - http-bio-8080-exec-5 2
+0:0:0:0:0:0:0:1 - - [22/May/2022:00:00:12 +1200] "GET /Flower/selectBalanceServlet HTTP/1.1" 200 6 http-bio-8080-exec-2 37
+0:0:0:0:0:0:0:1 - - [22/May/2022:00:00:12 +1200] "GET /Flower/selectAllServlet HTTP/1.1" 200 273 http-bio-8080-exec-6 103
+0:0:0:0:0:0:0:1 - - [22/May/2022:00:00:15 +1200] "GET /Flower/add.html HTTP/1.1" 200 1770 http-bio-8080-exec-8 4
+0:0:0:0:0:0:0:1 - - [22/May/2022:00:00:15 +1200] "GET /Flower/JS/add.js HTTP/1.1" 200 2474 http-bio-8080-exec-9 2
+0:0:0:0:0:0:0:1 - - [22/May/2022:00:00:16 +1200] "GET /Flower/addServlet?actionName=add&type=consume&data=&itemsName=&quantity=&price= HTTP/1.1" 200 - http-bio-8080-exec-10 16

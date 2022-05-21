@@ -29,12 +29,14 @@ public class SelectAllDao {
         bill = new Bill();
         //  获取数据
         int id = resultSet.getInt("id");
+        String type = resultSet.getString("type");
         Date data = resultSet.getDate("data");
         String itemsName = resultSet.getString("itemsName");
         int quantity = resultSet.getInt("quantity");
-        BigDecimal price = BigDecimal.valueOf(resultSet.getInt("price"));
+        BigDecimal price = resultSet.getBigDecimal("price");
         // 封装对象
         bill.setId(id);
+        bill.setType(type);
         bill.setData(data);
         bill.setItemsName(itemsName);
         bill.setQuantity(quantity);

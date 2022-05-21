@@ -20,7 +20,7 @@ text-align: center; /*让div内部文字居中*/
 	border:1px solid black;
 	border-radius: 20px;
 	width: 300px;
-	height: 350px;
+	height: 450px;
 	margin: auto;
 	position: absolute;
 	top: 200px;
@@ -37,11 +37,16 @@ margin:10px
 margin:10px
 }
 
+.err_msg{
+   
+    color: red;
+     margin-left: 50px;
+}
 
 </style>
 <body>
 <div class="box">
-    <form action="/Flower/addServlet" method="get">
+    <form action="/Flower/addServlet" method="get" id="add-form">
         <input type="hidden" name="actionName" value="add">
         <br>
         <div class="title">
@@ -49,11 +54,13 @@ margin:10px
         </div>
         账单类型: consume<input type="radio" name="type" value="consume" checked="checked">
         income<input type="radio" name="type" value="income"><br>
-        请输入日期:<input type="date" name="data"><br>
-        请输入商品名称:<input type="text" name="itemsName"><br>
-        请输入数量:<input type="text" name="quantity"><br>
-        请输入金额:<input type="text" name="price"><br>
-        <input type="submit" value="Submit">
+        请输入日期:<input type="date" name="data" id=""date><br>
+        请输入商品名称:<input type="text" name="itemsName" id="itemsName"><br>
+        请输入数量:<input type="text" name="quantity"id="quantity"><br>
+        <div id="quantity_err" class="err_msg" style="display: none">输入错误,请输入数字</div>
+        请输入金额:<input type="text" name="price" di="price"><br>
+        <span id="price" class="err_msg" style="display: none">输入错误,请输入数字</span>
+        <input type="submit" value="Submit" class="submit">
 
 
     </form>

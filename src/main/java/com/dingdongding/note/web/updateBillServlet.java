@@ -10,7 +10,6 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
-import java.io.BufferedReader;
 import java.io.IOException;
 import java.math.BigDecimal;
 import java.sql.SQLException;
@@ -29,24 +28,25 @@ public class updateBillServlet extends HttpServlet {
     exBalanceCheck exBalanceCheck = new exBalanceCheck();
     BigDecimal balance = BigDecimal.valueOf(0);
     BalanceDetail balanceDetail = new BalanceDetail();
+    SelectBeforeUpdateBalanceDao selectBeforeUpdateBalanceDao = new SelectBeforeUpdateBalanceDao();
     SelectByIdDao selectByIdDao = new SelectByIdDao();
+    searchUseridDao searchIdDao = new searchUseridDao();
     int result = 0;
 
     // 1.调用请求对象对请求体使用UTF-8字符集进行重新编辑
     req.setCharacterEncoding("utf-8");
     // 打印请求头，注意：运行时一定要注释掉，不然后面的getParameter的值为null
     // System.out.println(req.getReader().lines().collect(Collectors.joining(System.lineSeparator())));
-
     try {
       //      获取session
       HttpSession session = req.getSession();
       String username = (String) session.getAttribute("username");
-      //      通过session里面的username 调用searchIdDao
-      searchIdDao searchIdDao = new searchIdDao();
       Integer userid = searchIdDao.searchID(username);
+      Integer id = (Integer) session.getAttribute("id");
+      BigDecimal exPrice = (BigDecimal) session.getAttribute("price");
+      //      通过session里面的username 调用searchIdDao
+
       // 2.调取请求对象，获取数据合集
-      BufferedReader br = req.getReader();
-      int id = Integer.parseInt(br.readLine());
       SimpleDateFormat sf = new SimpleDateFormat("yyyy-MM-dd");
       Date Udata = sf.parse(req.getParameter("data"));
       java.sql.Date data = new java.sql.Date(Udata.getTime());
@@ -54,15 +54,15 @@ public class updateBillServlet extends HttpServlet {
       int quantity = Integer.parseInt(req.getParameter("quantity"));
       BigDecimal price = new BigDecimal(req.getParameter("price"));
       String type = req.getParameter("type");
-      System.out.println(type);
 
+      BigDecimal BeforeBalance = selectBeforeUpdateBalanceDao.search(id);
       if (type.equals("consume")) {
-        balance = exBalanceCheck.ebc(userid).subtract(price);
+        balance = BeforeBalance.subtract(price);
       } else {
-        balance = exBalanceCheck.ebc(userid).add(price);
+        balance = BeforeBalance.add(price);
       }
 
-      detail = new Detail(id, data, itemsName, quantity, price, null, userid);
+      detail = new Detail(id, type, data, itemsName, quantity, price, null, userid);
       balanceDetail = new BalanceDetail(balance, userid);
       //   3.调用Dao将查询验证信息推送到数据库服务器上
       result = updateDao.update(detail);

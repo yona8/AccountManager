@@ -59,12 +59,28 @@ header {
      line-height: 80px;
      text-align: center;
  }
- .loginArea input {
+ .loginName, .password{
+     
      width: 300px;
      height: 50px;
+     border: solid 1px black;
      margin:0px 50px 30px 50px;
  }
- 
+   .loginName input{
+       
+       border: none;
+       outline:medium;
+    width: 200px;
+     height: 50px;
+     margin-left: 50px;
+  }
+  .password input{
+        border: none;
+       outline:medium;
+    width: 200px;
+     height: 50px; 
+     margin-left: 50px;
+  }
   .loginName::before {
       position: absolute;
       top:95px;
@@ -74,7 +90,7 @@ header {
     }
 .password::before{
     position: absolute;
-    top:180px;
+    top:190px;
     left: 70px;
     font-family: 'icomoon';
      content: '\e904';
@@ -87,7 +103,7 @@ header {
 .remember input {
     width: 18px;
     height: 18px;
-    margin-right: 5px;
+    margin-left: 50px;
     
 }
 .log input {
@@ -128,4 +144,8 @@ header {
 .bottom {
     height: 160px;
     background-color: rgb(35, 102, 202);
+}
+.err_msg{
+    color: red;
+     margin-left: 50px;
 }

@@ -2,7 +2,7 @@ package com.dingdongding.note.web;
 
 import com.alibaba.fastjson.JSON;
 import com.dingdongding.note.dao.SelectAllDao;
-import com.dingdongding.note.dao.searchIdDao;
+import com.dingdongding.note.dao.searchUseridDao;
 import com.dingdongding.note.po.Bill;
 
 import javax.servlet.ServletException;
@@ -28,14 +28,13 @@ public class SelectAllServlet extends HttpServlet {
       HttpSession session = req.getSession();
       String username = (String) session.getAttribute("username");
       //      通过session里面的username 调用searchIdDao
-      searchIdDao searchIdDao = new searchIdDao();
+      searchUseridDao searchIdDao = new searchUseridDao();
       Integer userid = searchIdDao.searchID(username);
       //      1.调用SelectAll方法查询
       List<Bill> BillDetails = selectAllDao.searchAll(userid);
 
       //      2.将集合转换为JSON数据 序列化
       String jsonString = JSON.toJSONString(BillDetails);
-
       //  3.响应数据
       //      resp.setContentType("text/json;charset=utf-8");
       resp.getWriter().write(jsonString);

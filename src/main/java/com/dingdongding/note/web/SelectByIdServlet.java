@@ -1,8 +1,8 @@
 package com.dingdongding.note.web;
 
 import com.alibaba.fastjson.JSON;
+import com.dingdongding.note.dao.SelectBeforeUpdateBalanceDao;
 import com.dingdongding.note.dao.SelectByIdDao;
-import com.dingdongding.note.dao.searchIdDao;
 import com.dingdongding.note.po.Bill;
 
 import javax.servlet.ServletException;
@@ -21,15 +21,15 @@ public class SelectByIdServlet extends HttpServlet {
   protected void doGet(HttpServletRequest req, HttpServletResponse resp)
       throws ServletException, IOException {
     SelectByIdDao selectByIdDao = new SelectByIdDao();
-    //      获取session
-    HttpSession session = req.getSession();
-    String username = (String) session.getAttribute("username");
-    //      通过session里面的username 调用searchIdDao
-    searchIdDao searchIdDao = new searchIdDao();
+    SelectBeforeUpdateBalanceDao selectPriceTypeDao = new SelectBeforeUpdateBalanceDao();
     BufferedReader br = req.getReader();
-    int param = Integer.parseInt(br.readLine()); // json字符串
-    System.out.println("id:" + param);
-    List<Bill> bills = selectByIdDao.SelectOneRow(param);
+    int id = Integer.parseInt(br.readLine()); // json字符串
+    //    1.获取Session对象
+    HttpSession session = req.getSession();
+    //    2.存储数据
+    session.setAttribute("id", id);
+
+    List<Bill> bills = selectByIdDao.SelectOneRow(id);
     String jsonString = JSON.toJSONString(bills);
     System.out.println(jsonString);
     resp.getWriter().write(jsonString);

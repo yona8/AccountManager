@@ -33,7 +33,7 @@ window.onload=function(){
         //  4.判断是否符合规则
         // var reg = /^\w{6,12}$/;
         // var flag = reg.test(username);
-        var flag = username.length >= 6 && username.length <= 12;
+        var flag = username.length >= 2 && username.length <= 6;
         if (flag) {
             document.getElementById("username_err").style.display = 'none';
         } else {

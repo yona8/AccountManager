@@ -1,7 +1,7 @@
 package com.dingdongding.note.web;
 
 import com.dingdongding.note.dao.exBalanceCheck;
-import com.dingdongding.note.dao.searchIdDao;
+import com.dingdongding.note.dao.searchUseridDao;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -23,7 +23,7 @@ public class SelectBalanceServlet extends HttpServlet {
     HttpSession session = req.getSession();
     String username = (String) session.getAttribute("username");
     //      通过session里面的username 调用searchIdDao
-    searchIdDao searchIdDao = new searchIdDao();
+    searchUseridDao searchIdDao = new searchUseridDao();
     try {
       Integer userid = searchIdDao.searchID(username);
       BigDecimal ebc = exBalanceCheck.ebc(userid);

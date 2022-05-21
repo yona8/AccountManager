@@ -4,7 +4,7 @@ import com.alibaba.fastjson.JSON;
 import com.dingdongding.note.dao.SelectAllDao;
 import com.dingdongding.note.dao.deleteByids;
 import com.dingdongding.note.dao.exBalanceCheck;
-import com.dingdongding.note.dao.searchIdDao;
+import com.dingdongding.note.dao.searchUseridDao;
 import com.dingdongding.note.po.Bill;
 
 import javax.servlet.ServletException;
@@ -35,7 +35,7 @@ public class deleteServlet extends HttpServlet {
       HttpSession session = req.getSession();
       String username = (String) session.getAttribute("username");
       //      通过session里面的username 调用searchIdDao
-      searchIdDao searchIdDao = new searchIdDao();
+      searchUseridDao searchIdDao = new searchUseridDao();
       Integer userid = searchIdDao.searchID(username);
       int delete = deleteByids.delete(ids);
       if (delete == 1) {

@@ -7,7 +7,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-public class searchIdDao {
+public class searchUseridDao {
   DBUtil util = new DBUtil();
 
   public Integer searchID(String username) throws SQLException {

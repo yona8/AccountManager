@@ -24,16 +24,27 @@ public class registerServlet extends HttpServlet {
     //    1.调用用户输入的用户名和密码
     String username = req.getParameter("username");
     String password = req.getParameter("password");
-    //        2.执行dao
-    user = new User(null, username, password);
-    result = dao.register(user);
-    // 3.调用响应对象将处理结果以二进制形式写入到响应体
-    resp.setContentType("text/html;charset=utf-8");
-    out = resp.getWriter();
-    if (result == 1) {
-      resp.sendRedirect(req.getContextPath() + "/index.html");
+    int userNameCount = dao.userName(username);
+    if (userNameCount == 1) {
+      resp.getWriter()
+          .print(
+              "<script>alert('Registration failed, username already exists');window.location.href='/Flower/register.html'</script>");
     } else {
-      out.print("<font style='color:red;font-size:40'>注册失败</font>");
+      //        2.执行dao
+      user = new User(null, username, password);
+      result = dao.register(user);
+      // 3.调用响应对象将处理结果以二进制形式写入到响应体
+      resp.setContentType("text/html;charset=utf-8");
+      out = resp.getWriter();
+      if (result == 1) {
+        resp.getWriter()
+            .print(
+                "<script>alert('Congratulations！！registration success！！');window.location.href='/Flower/index.html'</script>");
+      } else {
+        resp.getWriter()
+            .print(
+                "<script>alert('registration failed, please try again later');window.location.href='/Flower/register.html'</script>");
+      }
     }
   }
 }

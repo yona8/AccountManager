@@ -67,10 +67,14 @@ public class addServlet extends HttpServlet {
       int balance1 = updateBalanceDao.updateBalance(balanceDetail);
       //       4.调用响应对象，根据验证结果将不同资源文件地址写入到响应头，交给浏览器
       if (result == 1 && balance1 == 1) { // 添加成功
-        resp.sendRedirect(req.getContextPath() + "/bill.html");
-        //        resp.getWriter().write("success");
+
+        resp.getWriter()
+            .print(
+                "<script>alert('Add successful!!');window.location.href='/Flower/bill.html'</script>");
       } else {
-        resp.sendRedirect(req.getContextPath() + "/login-error.html");
+        resp.getWriter()
+            .print(
+                "<script>alert('Add failed!!Please try again');window.location.href='/Flower/add.html'</script>");
       }
     } catch (ParseException | SQLException e) {
       e.printStackTrace();

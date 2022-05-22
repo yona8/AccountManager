@@ -41,13 +41,13 @@ window.onload = function () {
         }
         return flag;
     }
-    // 注意：这里是获取表单对象
-    var redForm = document.getElementById("reg-form");
-    //    表单对象提交时
-    redForm.onsubmit = function () {
-        //    同时为true提交
-        var flag = checkUsername() && checkPassword();
-        return flag;
-    }
+    // // 注意：这里是获取表单对象
+    // var redForm = document.getElementById("reg-form");
+    // //    表单对象提交时
+    // redForm.onsubmit = function () {
+    //     //    同时为true提交
+    //     var flag = checkUsername() && checkPassword();
+    //     return flag;
+    // }
 
 }

@@ -25,6 +25,25 @@ public class userDao {
     }
     return result;
   }
+  // 验证用户名的唯一性
+  public int userName(String username) {
+    String sql = "select count(*) from Account.user where username = (?)";
+    PreparedStatement ps = util.createStatement(sql);
+    ResultSet rs = null;
+    int result = 0;
+    try {
+      ps.setString(1, username);
+      rs = ps.executeQuery();
+      while (rs.next()) {
+        result = rs.getInt("count(*)");
+      }
+    } catch (SQLException e) {
+      e.printStackTrace();
+    } finally {
+      util.close();
+    }
+    return result;
+  }
 
   // 登录验证
   public int login(String username, String password) {

@@ -26,11 +26,11 @@
             <!-- actionName表示用户行为，通过这个参数可以在UserServlet中判断用户当前想要的操作的功能
              -->
             <input type="hidden" name="actionName" value="login">
-            <div class="loginName"><input type="text" name="userName" id="userName"></div>
-            <span id="username_err" class="err_msg" style="display: none">用户名不能为空并且需在2-6位之间</span>
-            <div class="password"><input type="password" name="userPwd" id="userPwd"></div>
+            <div class="loginName"><input type="text" required name="userName" id="userName"></div>
+            <span id="username_err" class="err_msg" style="display: none">用户名不能为空并且需在2-12位之间</span>
+            <div class="password"><input type="password" required name="userPwd" id="userPwd"></div>
             <span id="password_err" class="err_msg" style="display: none">密码不能为空且需在4-8位之间</span>
-            <div class="remember"><input type="checkbox" value="1" name="rem">记住我</div>
+            <div class="remember"><input type="checkbox"  value="1" name="rem">记住我</div>
             <span id="msg" style="color:red;font-size:12px;"></span>
             <div class="log"><input type="submit" value="登录" ></div>
             <button class="cancel">取消</button>

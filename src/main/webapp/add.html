@@ -4,9 +4,9 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>add</title>
     <script src="jquery.min.js"></script>
-    <script src="JS/add.js"></script>
+    <!-- <script src="JS/add.js"></script> -->
     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
 </head>
 <style>
@@ -54,11 +54,11 @@ margin:10px
         </div>
         账单类型: consume<input type="radio" name="type" value="consume" checked="checked">
         income<input type="radio" name="type" value="income"><br>
-        请输入日期:<input type="date" name="data" id=""date><br>
-        请输入商品名称:<input type="text" name="itemsName" id="itemsName"><br>
-        请输入数量:<input type="text" name="quantity"id="quantity"><br>
+        请输入日期:<input type="date" required name="data" id=""date><br>
+        请输入商品名称:<input type="text" required  name="itemsName" id="itemsName"><br>
+        请输入数量:<input type="number" required  name="quantity"id="quantity"><br>
         <div id="quantity_err" class="err_msg" style="display: none">输入错误,请输入数字</div>
-        请输入金额:<input type="text" name="price" di="price"><br>
+        请输入金额:<input type="number" required  name="price" di="price"><br>
         <span id="price" class="err_msg" style="display: none">输入错误,请输入数字</span>
         <input type="submit" value="Submit" class="submit">
 

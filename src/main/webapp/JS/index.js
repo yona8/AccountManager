@@ -11,7 +11,7 @@ window.onload = function () {
         //  4.判断是否符合规则
         // var reg = /^\w{6,12}$/;
         // var flag = reg.test(userName);
-        var flag = userName.length >= 2 && userName.length <= 6;
+        var flag = userName.length >= 2 && userName.length <= 12;
         if (flag) {
             document.getElementById("username_err").style.display = 'none';
         } else {
@@ -43,13 +43,13 @@ window.onload = function () {
         }
         return flag;
     }
-    // 注意：这里是获取表单对象
-    var loginForm = document.getElementById("loginForm");
-    //    表单对象提交时
-    loginForm.onsubmit = function () {
-        //    同时为true提交
-        var flag = checkuserName() && checkuserPwd();
-        return flag;
-    }
+    // // 注意：这里是获取表单对象
+    // var loginForm = document.getElementById("loginForm");
+    // //    表单对象提交时
+    // loginForm.onsubmit = function () {
+    //     //    同时为true提交
+    //     var flag = checkuserName() && checkuserPwd();
+    //     return flag;
+    // }
 }
    

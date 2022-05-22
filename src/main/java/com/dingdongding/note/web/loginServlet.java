@@ -34,9 +34,14 @@ public class loginServlet extends HttpServlet {
     result = dao.login(username, password);
     // 4.调用响应对象，根据验证结果将不同资源文件地址写入到响应头，交给浏览器
     if (result == 1) { // 用户存在
-      resp.sendRedirect(req.getContextPath() + "/bill.html");
+      resp.getWriter()
+          .print(
+              "<script>alert('Congratulations !!login successful!!');window.location.href='/Flower/bill.html'</script>");
+
     } else {
-      resp.sendRedirect(req.getContextPath() + "/login-error.html");
+      resp.getWriter()
+          .print(
+              "<script>alert('login failed !!');window.location.href='/Flower/index.html'</script>");
     }
   }
 

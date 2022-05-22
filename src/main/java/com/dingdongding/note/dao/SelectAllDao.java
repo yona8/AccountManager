@@ -9,7 +9,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class SelectAllDao {
-  private DBUtil util = new DBUtil();
+  private final DBUtil util = new DBUtil();
 
   public List<Bill> searchAll(int userid) {
     int result = 0;

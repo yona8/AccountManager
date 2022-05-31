@@ -3,7 +3,6 @@ package com.dingdongding.note.web;
 import com.dingdongding.note.dao.UpdateBalanceDao;
 import com.dingdongding.note.dao.addDao;
 import com.dingdongding.note.dao.exBalanceCheck;
-import com.dingdongding.note.dao.searchUseridDao;
 import com.dingdongding.note.po.BalanceDetail;
 import com.dingdongding.note.po.Detail;
 
@@ -12,7 +11,6 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.math.BigDecimal;
 import java.sql.SQLException;
@@ -23,14 +21,13 @@ import java.util.Date;
 @WebServlet("/addServlet")
 public class addServlet extends HttpServlet {
   @Override
-  protected void doGet(HttpServletRequest req, HttpServletResponse resp)
-      throws ServletException, IOException {
+  protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws IOException {
     addDao adddao = new addDao();
-    Detail detail = new Detail();
+    Detail detail;
     UpdateBalanceDao updateBalanceDao = new UpdateBalanceDao();
     exBalanceCheck exBalanceCheck = new exBalanceCheck();
-    BigDecimal balance = BigDecimal.valueOf(0);
-    BalanceDetail balanceDetail = new BalanceDetail();
+    BigDecimal balance;
+    BalanceDetail balanceDetail;
     int result = 0;
 
     // 1.调用请求对象对请求体使用UTF-8字符集进行重新编辑
@@ -39,12 +36,9 @@ public class addServlet extends HttpServlet {
     // System.out.println(req.getReader().lines().collect(Collectors.joining(System.lineSeparator())));
 
     try {
-      //      获取session
-      HttpSession session = req.getSession();
-      String username = (String) session.getAttribute("username");
-      //      通过session里面的username 调用searchIdDao
-      searchUseridDao searchIdDao = new searchUseridDao();
-      Integer userid = searchIdDao.searchID(username);
+      // 获取Session中的用户名并调取用户ID
+      Sessions ss = new Sessions();
+      int userid = ss.GetUserID(req);
       // 2.调取请求对象，获取数据合集
       SimpleDateFormat sf = new SimpleDateFormat("yyyy-MM-dd");
       Date Udata = sf.parse(req.getParameter("data"));

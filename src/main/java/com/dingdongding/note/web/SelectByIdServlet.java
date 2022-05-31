@@ -1,7 +1,6 @@
 package com.dingdongding.note.web;
 
 import com.alibaba.fastjson.JSON;
-import com.dingdongding.note.dao.SelectBeforeUpdateBalanceDao;
 import com.dingdongding.note.dao.SelectByIdDao;
 import com.dingdongding.note.po.Bill;
 
@@ -21,7 +20,6 @@ public class SelectByIdServlet extends HttpServlet {
   protected void doGet(HttpServletRequest req, HttpServletResponse resp)
       throws ServletException, IOException {
     SelectByIdDao selectByIdDao = new SelectByIdDao();
-    SelectBeforeUpdateBalanceDao selectPriceTypeDao = new SelectBeforeUpdateBalanceDao();
     BufferedReader br = req.getReader();
     int id = Integer.parseInt(br.readLine()); // json字符串
     //    1.获取Session对象

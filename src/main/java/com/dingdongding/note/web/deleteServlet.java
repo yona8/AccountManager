@@ -4,7 +4,6 @@ import com.alibaba.fastjson.JSON;
 import com.dingdongding.note.dao.SelectAllDao;
 import com.dingdongding.note.dao.deleteByids;
 import com.dingdongding.note.dao.exBalanceCheck;
-import com.dingdongding.note.dao.searchUseridDao;
 import com.dingdongding.note.po.Bill;
 
 import javax.servlet.ServletException;
@@ -12,7 +11,6 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.math.BigDecimal;
@@ -31,12 +29,9 @@ public class deleteServlet extends HttpServlet {
     String params = br.readLine(); // json字符串
     int[] ids = JSON.parseObject(params, int[].class);
     try {
-      //      获取session
-      HttpSession session = req.getSession();
-      String username = (String) session.getAttribute("username");
-      //      通过session里面的username 调用searchIdDao
-      searchUseridDao searchIdDao = new searchUseridDao();
-      Integer userid = searchIdDao.searchID(username);
+      // 获取Session中的用户名并调取用户ID
+      Sessions ss = new Sessions();
+      int userid = ss.GetUserID(req);
       int delete = deleteByids.delete(ids);
       if (delete == 1) {
         //      1.调用SelectAll方法查询
@@ -51,6 +46,7 @@ public class deleteServlet extends HttpServlet {
         //      resp.setContentType("text/json;charset=utf-8");
         resp.getWriter().write(jsonString);
       }
+
     } catch (SQLException e) {
       e.printStackTrace();
     }

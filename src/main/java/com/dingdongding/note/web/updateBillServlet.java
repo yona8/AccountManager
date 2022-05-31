@@ -1,6 +1,9 @@
 package com.dingdongding.note.web;
 
-import com.dingdongding.note.dao.*;
+import com.dingdongding.note.dao.SelectBeforeUpdateBalanceDao;
+import com.dingdongding.note.dao.UpdateBalanceDao;
+import com.dingdongding.note.dao.UpdateDao;
+import com.dingdongding.note.dao.searchUseridDao;
 import com.dingdongding.note.po.BalanceDetail;
 import com.dingdongding.note.po.Detail;
 
@@ -25,11 +28,9 @@ public class updateBillServlet extends HttpServlet {
     UpdateDao updateDao = new UpdateDao();
     Detail detail = new Detail();
     UpdateBalanceDao updateBalanceDao = new UpdateBalanceDao();
-    exBalanceCheck exBalanceCheck = new exBalanceCheck();
     BigDecimal balance = BigDecimal.valueOf(0);
     BalanceDetail balanceDetail = new BalanceDetail();
     SelectBeforeUpdateBalanceDao selectBeforeUpdateBalanceDao = new SelectBeforeUpdateBalanceDao();
-    SelectByIdDao selectByIdDao = new SelectByIdDao();
     searchUseridDao searchIdDao = new searchUseridDao();
     int result = 0;
 

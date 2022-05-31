@@ -63,10 +63,11 @@ $(function () {
                     method: "get",
                     url: "http://localhost:8080/Flower/selectBalanceServlet"
                 }).then(function (resp) {
-                    //从后台获取数据
+                    //从后台获取余额数据
                     let jsonbalance = resp.data;
                     // let balance = JSON.stringify(jsonbalance);
                     console.log(jsonbalance);
+                    //替换之前的数据
                     $("#balance").val($("#balance").val()).replaceWith(jsonbalance);
 
 
@@ -112,7 +113,7 @@ console.log(bills);
         method: "get",
         url: "http://localhost:8080/Flower/selectBalanceServlet"
     }).then(function (resp) {
-        //从后台获取数据
+        //从后台获取余额
         let balance = resp.data;
         $("#balance").val($("#balance").val()).replaceWith(balance);
 

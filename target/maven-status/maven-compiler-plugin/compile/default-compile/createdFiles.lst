@@ -1,3 +1,4 @@
 com/dingdongding/note/web/Sessions.class
+com/dingdongding/note/web/deleteServlet.class
 com/dingdongding/note/dao/SelectBeforeUpdateBalanceDao.class
 com/dingdongding/note/dao/searchUseridDao.class

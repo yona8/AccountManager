@@ -1,9 +1,8 @@
 package com.dingdongding.note.web;
 
 import com.alibaba.fastjson.JSON;
-import com.dingdongding.note.dao.SelectAllDao;
-import com.dingdongding.note.dao.deleteByids;
-import com.dingdongding.note.dao.exBalanceCheck;
+import com.dingdongding.note.dao.*;
+import com.dingdongding.note.po.BalanceDetail;
 import com.dingdongding.note.po.Bill;
 
 import javax.servlet.ServletException;
@@ -25,6 +24,10 @@ public class deleteServlet extends HttpServlet {
     deleteByids deleteByids = new deleteByids();
     SelectAllDao selectAllDao = new SelectAllDao();
     exBalanceCheck exBalanceCheck = new exBalanceCheck();
+    UpdateBalanceDao updateBalanceDao = new UpdateBalanceDao();
+    SelectBeforeUpdateBalanceDao selectBeforeUpdateBalanceDao = new SelectBeforeUpdateBalanceDao();
+    int Balance = 0;
+    // 获取前端数据ids
     BufferedReader br = req.getReader();
     String params = br.readLine(); // json字符串
     int[] ids = JSON.parseObject(params, int[].class);
@@ -32,8 +35,16 @@ public class deleteServlet extends HttpServlet {
       // 获取Session中的用户名并调取用户ID
       Sessions ss = new Sessions();
       int userid = ss.GetUserID(req);
+      //      掉用删除dao标记删除在数据库行
       int delete = deleteByids.delete(ids);
-      if (delete == 1) {
+      // 循环遍历ids得到要删除的ID，调用dao层修改balance
+      for (int id : ids) {
+        BigDecimal balance = selectBeforeUpdateBalanceDao.search(id);
+        BalanceDetail balanceDetail = new BalanceDetail(balance, userid);
+        Balance = updateBalanceDao.updateBalance(balanceDetail);
+      }
+      // 如果明细表和余额表都删除成功，继续执行
+      if (delete == 1 && Balance == 1) {
         //      1.调用SelectAll方法查询
         List<Bill> BillDetails = selectAllDao.searchAll(userid);
 

@@ -7,17 +7,13 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.ArrayList;
-import java.util.List;
 
 public class SelectBeforeUpdateBalanceDao {
   BigDecimal exBalance = BigDecimal.valueOf(0);
   DBUtil util = new DBUtil();
   exBalanceCheck exBalanceCheck = new exBalanceCheck();
-  searchUseridDao searchUseridDao = new searchUseridDao();
 
   public BigDecimal search(Integer id) throws SQLException {
-    List<Object> PriceType = new ArrayList<>();
     String sql = "select type, price,userid from Account.new_table where id = ?";
     Connection con = util.getCon();
     PreparedStatement ps = con.prepareStatement(sql);
